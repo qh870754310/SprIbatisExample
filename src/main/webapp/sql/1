@@ -1,0 +1,63 @@
+create table EXPORT_C  (
+   EXPORT_ID            VARCHAR2(40)                    not null,
+   INPUT_DATE           TIMESTAMP,
+   CONTRACT_IDS         VARCHAR2(500),
+   CUSTOMER_CONTRACT    VARCHAR2(200),
+   LCNO                 VARCHAR2(10),
+   CONSIGNEE            VARCHAR2(100),
+   MARKS                VARCHAR2(1000),
+   REMARK               VARCHAR2(100),
+   SHIPMENT_PORT        VARCHAR2(100),
+   DESTINATION_PORT     VARCHAR2(100),
+   TRANSPORT_MODE       VARCHAR2(10),
+   PRICE_CONDITION      VARCHAR2(10),
+   STATE                INT,
+   GROSS_WEIGHT         NUMBER(5,2),
+   NET_WEIGHT           NUMBER(5,2),
+   MEASUREMENT          NUMBER(8,2),
+   CREATE_BY            VARCHAR2(40),
+   CREATE_DEPT          VARCHAR2(40),
+   CREATE_TIME          TIMESTAMP,
+   constraint PK_EXPORT_C primary key (EXPORT_ID)
+);
+
+
+create table EXPORT_PRODUCT_C  (
+   EXPORT_PRODUCT_ID    VARCHAR2(40)                    not null,
+   EXPORT_ID            VARCHAR2(40),
+   FACTORY_ID           VARCHAR2(40),
+   FACTORY_NAME         VARCHAR2(50),
+   PRODUCT_NO           VARCHAR2(50),
+   PACKING_UNIT         VARCHAR2(10),
+   CNUMBER              INT,
+   BOX_NUM              INT,
+   GROSS_WEIGHT         NUMBER(8,2),
+   NET_WEIGHT           NUMBER(8,2),
+   SIZE_LENGTH          NUMBER(8,2),
+   SIZE_WIDTH           NUMBER(8,2),
+   SIZE_HEIGHT          NUMBER(8,2),
+   EX_PRICE             NUMBER(8,2),
+   PRICE                NUMBER(10,2),
+   TAX                  NUMBER(8,2),
+   ORDER_NO             INT,
+   constraint PK_EXPORT_PRODUCT_C primary key (EXPORT_PRODUCT_ID)
+);
+
+
+create table EXT_EPRODUCT_C  (
+   EXT_EPRODUCT_ID      VARCHAR2(40)                    not null,
+   EXPORT_PRODUCT_ID    VARCHAR2(40),
+   FACTORY_ID           VARCHAR2(40),
+   FACTORY_NAME         VARCHAR2(50),
+   CTYPE                INT,
+   PRODUCT_NO           VARCHAR2(50),
+   PRODUCT_IMAGE        VARCHAR2(200),
+   PRODUCT_DESC         VARCHAR2(600),
+   CNUMBER              INT,
+   PACKING_UNIT         VARCHAR2(10),
+   PRICE                NUMBER(10,2),
+   AMOUNT               NUMBER(10,2),
+   PRODUCT_REQUEST      VARCHAR2(2000),
+   ORDER_NO             INT,
+   constraint PK_EXT_EPRODUCT_C primary key (EXT_EPRODUCT_ID)
+);
